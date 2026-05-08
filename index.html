@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modal vs Popup — Exposición</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="blob blob-purple"></div>
+  <div class="blob blob-teal"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-links">
+        <a href="#definicion">Definición</a>
+        <a href="#diferencias">Diferencias</a>
+        <a href="#demo">Ejemplo</a>
+        <a href="#codigo">Código</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">
+        <span class="dot-live"></span>
+        Exposición · Componentes de Interfaz Web
+      </div>
+      <h1>
+        <span class="word-modal">Modal</span>
+        <span class="word-vs"> vs </span>
+        <span class="word-popup">Popup</span>
+      </h1>
+      <p class="hero-sub">
+        Dos componentes fundamentales del diseño de interfaces. Parecidos visualmente,
+        pero con propósitos, comportamientos y casos de uso completamente distintos.
+      </p>
+      <div class="hero-cta">
+        <a href="#demo" class="btn btn-primary">▶ Ver ejemplo</a>
+        <a href="#diferencias" class="btn btn-ghost">Comparar diferencias</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEFINICIONES -->
+  <section class="section reveal" id="definicion">
+    <div class="container">
+      <div class="section-label">01 · Definición</div>
+      <div class="section-title">¿Qué es cada uno?</div>
+
+      <div class="def-grid">
+
+        <div class="def-card modal-card">
+          <div class="def-icon modal">⬜</div>
+          <h3>Modal</h3>
+          <p class="def-desc">
+            Un modal (o diálogo modal) es una ventana que aparece sobre el contenido principal
+            de la página, bloqueando toda interacción con el fondo hasta que el usuario
+            realice una acción explícita.
+          </p>
+          <ul class="prop-list">
+            <li><span class="prop-dot dot-m"></span>Crea un overlay oscuro que cubre el fondo</li>
+            <li><span class="prop-dot dot-m"></span>El foco del teclado queda atrapado dentro</li>
+            <li><span class="prop-dot dot-m"></span>Se centra en la pantalla, sin anclarse a ningún elemento</li>
+            <li><span class="prop-dot dot-m"></span>Requiere acción del usuario para cerrarse</li>
+            <li><span class="prop-dot dot-m"></span>Interrumpe intencionalmente el flujo de trabajo</li>
+          </ul>
+        </div>
+
+        <div class="def-card popup-card">
+          <div class="def-icon popup">💬</div>
+          <h3>Popup</h3>
+          <p class="def-desc">
+            Un popup es un elemento flotante que aparece anclado a un elemento específico
+            de la página. No bloquea la interfaz y permite al usuario seguir interactuando
+            con el resto del contenido.
+          </p>
+          <ul class="prop-list">
+            <li><span class="prop-dot dot-p"></span>No genera overlay ni oscurece el fondo</li>
+            <li><span class="prop-dot dot-p"></span>El foco puede salir libremente del componente</li>
+            <li><span class="prop-dot dot-p"></span>Aparece posicionado relativo a su elemento origen</li>
+            <li><span class="prop-dot dot-p"></span>Se cierra al hacer clic afuera o perder el hover</li>
+            <li><span class="prop-dot dot-p"></span>Es complementario al flujo, no lo interrumpe</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA COMPARATIVA -->
+  <section class="section reveal" id="diferencias">
+    <div class="container">
+      <div class="section-label">02 · Comparativa</div>
+      <div class="section-title">Diferencias técnicas</div>
+
+      <div class="table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th class="modal-th">🟣 Modal</th>
+              <th class="popup-th">🟢 Popup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overlay de fondo</td>
+              <td class="modal-val">Sí — oscurece toda la página</td>
+              <td class="popup-val">No — el fondo permanece activo</td>
+            </tr>
+            <tr>
+              <td>Bloqueo de UI</td>
+              <td class="modal-val">Total (foco atrapado)</td>
+              <td class="popup-val">Ninguno — libre navegación</td>
+            </tr>
+            <tr>
+              <td>Posición</td>
+              <td class="modal-val">Centrado en la pantalla</td>
+              <td class="popup-val">Relativo al elemento disparador</td>
+            </tr>
+            <tr>
+              <td>Cómo se cierra</td>
+              <td class="modal-val">Botón, Esc, clic en overlay</td>
+              <td class="popup-val">Clic afuera, hover-out, Esc</td>
+            </tr>
+            <tr>
+              <td>Peso visual</td>
+              <td class="modal-val">Alto — protagonista total</td>
+              <td class="popup-val">Bajo — soporte al contenido</td>
+            </tr>
+            <tr>
+              <td>Interrupción</td>
+              <td class="modal-val">Alta — intencional</td>
+              <td class="popup-val">Muy baja — no invasivo</td>
+            </tr>
+            <tr>
+              <td>Tamaño típico</td>
+              <td class="modal-val">Mediano a grande (300–600px)</td>
+              <td class="popup-val">Pequeño a mediano (150–300px)</td>
+            </tr>
+            <tr>
+              <td>Rol ARIA</td>
+              <td class="modal-val">role="dialog" aria-modal="true"</td>
+              <td class="popup-val">role="tooltip" o popover API</td>
+            </tr>
+            <tr>
+              <td>Nivel de urgencia</td>
+              <td class="modal-val">Decisiones críticas</td>
+              <td class="popup-val">Información contextual</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO EN VIVO -->
+  <section class="section reveal" id="demo">
+    <div class="container">
+      <div class="section-label">03 · Demo interactivo</div>
+      <div class="section-title">Pruébalo tú mismo</div>
+
+      <div class="demo-grid">
+
+        <!-- MODAL DEMO -->
+        <div class="demo-card">
+          <div class="browser-mock">
+            <div class="browser-bar">
+              <div class="browser-dot bd-red"></div>
+              <div class="browser-dot bd-amber"></div>
+              <div class="browser-dot bd-green"></div>
+            </div>
+            <div class="browser-content">
+              <div class="bg-page-sim">
+                <div class="sim-line"></div>
+                <div class="sim-line"></div>
+                <div class="sim-line"></div>
+                <div class="sim-line"></div>
+              </div>
+              <div style="position:relative;z-index:2;background:rgba(0,0,0,0.5);border-radius:8px;padding:10px 14px;font-size:11px;color:rgba(255,255,255,0.5);font-family:'Space Mono',monospace;">
+                ████ overlay bloquea el fondo ████
+              </div>
+            </div>
+          </div>
+          <h4 style="color: var(--purple-400);">Modal</h4>
+          <p>Al abrir el modal, el fondo se oscurece completamente y <strong style="color:var(--text)">no puedes interactuar con nada</strong> hasta cerrarlo. Es intencional.</p>
+          <button class="btn btn-primary" onclick="document.getElementById('liveModal').classList.add('open')">
+            ⬜ Abrir Modal
+          </button>
+        </div>
+
+        <!-- POPUP DEMO -->
+        <div class="demo-card" style="position: relative; overflow: visible;">
+          <div class="browser-mock">
+            <div class="browser-bar">
+              <div class="browser-dot bd-red"></div>
+              <div class="browser-dot bd-amber"></div>
+              <div class="browser-dot bd-green"></div>
+            </div>
+            <div class="browser-content" style="flex-direction:column;gap:6px;">
+              <div class="sim-line" style="width:80%;background:var(--text-3);height:7px;border-radius:4px;opacity:0.4;"></div>
+              <div class="sim-line" style="width:60%;background:var(--text-3);height:7px;border-radius:4px;opacity:0.4;"></div>
+              <div style="font-size:10px;color:var(--teal-200);font-family:'Space Mono',monospace;margin-top:4px;">↑ fondo sigue activo</div>
+            </div>
+          </div>
+          <h4 style="color: var(--teal-200);">Popup</h4>
+          <p>El popup aparece <strong style="color:var(--text)">anclado al botón</strong>, sin oscurecer nada. El resto de la página sigue completamente activa.</p>
+          <div class="popup-anchor" id="popupAnchor">
+            <div class="popup-box" id="livePopup" role="tooltip">
+              <div class="popup-tag">popup</div>
+              <h4>💬 Información adicional</h4>
+              <p>Este popup no bloquea nada. La página sigue activa por completo detrás de mí. ¡Eso me diferencia del modal!</p>
+            </div>
+            <button class="btn btn-secondary" onclick="togglePopup(event)">
+              💬 Abrir Popup
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS DE USO -->
+  <section class="section reveal" id="uso">
+    <div class="container">
+      <div class="section-label">04 · Aplicación práctica</div>
+      <div class="section-title">¿Cuándo usar cada uno?</div>
+
+      <div class="use-grid">
+
+        <div class="use-card">
+          <div class="use-card-header">
+            <div class="use-card-icon uci-modal">⬜</div>
+            <h4 class="modal-h">Usa un Modal cuando…</h4>
+          </div>
+          <ul class="use-list">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Necesitas confirmar una acción destructiva (eliminar, desactivar)
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              El usuario debe completar un formulario antes de continuar
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Inicio de sesión / registro de usuario
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Términos y condiciones que requieren aceptación explícita
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Mostrar una alerta de error crítico o advertencia de seguridad
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Previsualización ampliada de imágenes o media
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#534AB7" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Subir o seleccionar archivos importantes
+            </li>
+          </ul>
+        </div>
+
+        <div class="use-card">
+          <div class="use-card-header">
+            <div class="use-card-icon uci-popup">💬</div>
+            <h4 class="popup-h">Usa un Popup cuando…</h4>
+          </div>
+          <ul class="use-list">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Quieres mostrar un tooltip con información de ayuda contextual
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Menú desplegable de navegación o menú contextual
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Selector de fecha (datepicker) o selector de color
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Notificación breve no bloqueante (toast)
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Vista previa de perfil de usuario al hacer hover
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Mostrar opciones adicionales sin abandonar la vista actual
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#0F6E56" fill-opacity="0.3"/><path d="M4.5 7L6.5 9L9.5 5" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Formulario inline pequeño (buscar, filtrar, etiquetar)
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓDIGO -->
+  <section class="section reveal" id="codigo">
+    <div class="container">
+      <div class="section-label">05 · Implementación</div>
+      <div class="section-title">Código básico</div>
+
+      <div class="code-tabs">
+        <button class="code-tab active" onclick="showTab('html-modal')">HTML Modal</button>
+        <button class="code-tab" onclick="showTab('html-popup')">HTML Popup</button>
+        <button class="code-tab" onclick="showTab('css-modal')">CSS Modal</button>
+        <button class="code-tab" onclick="showTab('js-modal')">JavaScript</button>
+      </div>
+
+      <div class="code-block active" id="html-modal">
+        <div class="code-header">
+          <span class="code-lang">HTML · estructura del modal</span>
+          <button class="copy-btn" onclick="copyCode('html-modal')">Copiar</button>
+        </div>
+        <pre><span class="cm">&lt;!-- Botón que abre el modal --&gt;</span>
+<span class="tg">&lt;button</span> <span class="at">onclick</span>=<span class="st">"abrirModal()"</span><span class="tg">&gt;</span>Abrir Modal<span class="tg">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Overlay + Modal --&gt;</span>
+<span class="tg">&lt;div</span> <span class="at">id</span>=<span class="st">"overlay"</span> <span class="at">class</span>=<span class="st">"overlay"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;div</span>
+    <span class="at">class</span>=<span class="st">"modal"</span>
+    <span class="at">role</span>=<span class="st">"dialog"</span>
+    <span class="at">aria-modal</span>=<span class="st">"true"</span>
+    <span class="at">aria-labelledby</span>=<span class="st">"modal-titulo"</span>
+  <span class="tg">&gt;</span>
+    <span class="tg">&lt;h2</span> <span class="at">id</span>=<span class="st">"modal-titulo"</span><span class="tg">&gt;</span>Título del Modal<span class="tg">&lt;/h2&gt;</span>
+    <span class="tg">&lt;p&gt;</span>Contenido importante aquí.<span class="tg">&lt;/p&gt;</span>
+
+    <span class="tg">&lt;button</span> <span class="at">onclick</span>=<span class="st">"cerrarModal()"</span><span class="tg">&gt;</span>Aceptar<span class="tg">&lt;/button&gt;</span>
+    <span class="tg">&lt;button</span> <span class="at">onclick</span>=<span class="st">"cerrarModal()"</span><span class="tg">&gt;</span>Cancelar<span class="tg">&lt;/button&gt;</span>
+  <span class="tg">&lt;/div&gt;</span>
+<span class="tg">&lt;/div&gt;</span></pre>
+      </div>
+
+      <div class="code-block" id="html-popup">
+        <div class="code-header">
+          <span class="code-lang">HTML · estructura del popup</span>
+          <button class="copy-btn" onclick="copyCode('html-popup')">Copiar</button>
+        </div>
+        <pre><span class="cm">&lt;!-- Contenedor relativo al botón --&gt;</span>
+<span class="tg">&lt;div</span> <span class="at">class</span>=<span class="st">"popup-wrapper"</span><span class="tg">&gt;</span>
+
+  <span class="cm">&lt;!-- Botón disparador --&gt;</span>
+  <span class="tg">&lt;button</span> <span class="at">onclick</span>=<span class="st">"togglePopup()"</span><span class="tg">&gt;</span>
+    Más info
+  <span class="tg">&lt;/button&gt;</span>
+
+  <span class="cm">&lt;!-- Popup anclado al botón --&gt;</span>
+  <span class="tg">&lt;div</span>
+    <span class="at">id</span>=<span class="st">"popup"</span>
+    <span class="at">class</span>=<span class="st">"popup hidden"</span>
+    <span class="at">role</span>=<span class="st">"tooltip"</span>
+  <span class="tg">&gt;</span>
+    <span class="tg">&lt;h4&gt;</span>Información<span class="tg">&lt;/h4&gt;</span>
+    <span class="tg">&lt;p&gt;</span>Aquí va la info contextual.<span class="tg">&lt;/p&gt;</span>
+  <span class="tg">&lt;/div&gt;</span>
+
+<span class="tg">&lt;/div&gt;</span></pre>
+      </div>
+
+      <div class="code-block" id="css-modal">
+        <div class="code-header">
+          <span class="code-lang">CSS · estilos del modal y overlay</span>
+          <button class="copy-btn" onclick="copyCode('css-modal')">Copiar</button>
+        </div>
+        <pre><span class="cm">/* Overlay que oscurece el fondo */</span>
+.<span class="fn">overlay</span> {
+  <span class="at">display</span>: <span class="st">none</span>;
+  <span class="at">position</span>: <span class="st">fixed</span>;  <span class="cm">/* cubre toda la pantalla */</span>
+  <span class="at">inset</span>: <span class="st">0</span>;
+  <span class="at">background</span>: <span class="st">rgba(0, 0, 0, 0.75)</span>;
+  <span class="at">z-index</span>: <span class="st">9999</span>;
+  <span class="at">align-items</span>: <span class="st">center</span>;
+  <span class="at">justify-content</span>: <span class="st">center</span>;
+}
+
+.<span class="fn">overlay</span>.<span class="fn">activo</span> {
+  <span class="at">display</span>: <span class="st">flex</span>;  <span class="cm">/* se muestra */</span>
+}
+
+<span class="cm">/* Caja del modal centrada */</span>
+.<span class="fn">modal</span> {
+  <span class="at">background</span>: <span class="st">white</span>;
+  <span class="at">border-radius</span>: <span class="st">12px</span>;
+  <span class="at">padding</span>: <span class="st">2rem</span>;
+  <span class="at">max-width</span>: <span class="st">480px</span>;
+  <span class="at">width</span>: <span class="st">90%</span>;
+}
+
+<span class="cm">/* Popup — posición relativa al padre */</span>
+.<span class="fn">popup</span> {
+  <span class="at">position</span>: <span class="st">absolute</span>;
+  <span class="at">bottom</span>: <span class="st">calc(100% + 10px)</span>;
+  <span class="at">left</span>: <span class="st">50%</span>;
+  <span class="at">transform</span>: <span class="st">translateX(-50%)</span>;
+}
+
+.<span class="fn">popup</span>.<span class="fn">hidden</span> { <span class="at">display</span>: <span class="st">none</span>; }</pre>
+      </div>
+
+      <div class="code-block" id="js-modal">
+        <div class="code-header">
+          <span class="code-lang">JavaScript · comportamiento</span>
+          <button class="copy-btn" onclick="copyCode('js-modal')">Copiar</button>
+        </div>
+        <pre><span class="cm">// ── MODAL ──────────────────────────</span>
+<span class="kw">const</span> overlay = document.<span class="fn">getElementById</span>(<span class="st">'overlay'</span>);
+
+<span class="kw">function</span> <span class="fn">abrirModal</span>() {
+  overlay.classList.<span class="fn">add</span>(<span class="st">'activo'</span>);
+  <span class="cm">// Trampa de foco para accesibilidad</span>
+  document.<span class="fn">body</span>.style.overflow = <span class="st">'hidden'</span>;
+}
+
+<span class="kw">function</span> <span class="fn">cerrarModal</span>() {
+  overlay.classList.<span class="fn">remove</span>(<span class="st">'activo'</span>);
+  document.<span class="fn">body</span>.style.overflow = <span class="st">''</span>;
+}
+
+<span class="cm">// Cerrar con la tecla Escape</span>
+document.<span class="fn">addEventListener</span>(<span class="st">'keydown'</span>, (e) => {
+  <span class="kw">if</span> (e.key === <span class="st">'Escape'</span>) <span class="fn">cerrarModal</span>();
+});
+
+<span class="cm">// ── POPUP ───────────────────────────</span>
+<span class="kw">const</span> popup = document.<span class="fn">getElementById</span>(<span class="st">'popup'</span>);
+
+<span class="kw">function</span> <span class="fn">togglePopup</span>(event) {
+  event.<span class="fn">stopPropagation</span>();  <span class="cm">// evita cierre inmediato</span>
+  popup.classList.<span class="fn">toggle</span>(<span class="st">'hidden'</span>);
+}
+
+<span class="cm">// Cerrar al hacer clic fuera</span>
+document.<span class="fn">addEventListener</span>(<span class="st">'click'</span>, () => {
+  popup.classList.<span class="fn">add</span>(<span class="st">'hidden'</span>);
+});</pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REGLA DE ORO -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="golden">
+        <span class="golden-label"> manera de usar </span>
+        <h3>
+          Si el usuario <span class="hi-m">DEBE actuar</span> antes de continuar → usa un
+          <span class="hi-m">Modal</span>.
+          Si solo quieres <span class="hi-p">mostrar info extra</span> sin interrumpir → usa un
+          <span class="hi-p">Popup</span>.
+        </h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span>Exposición </span>
+      <span>Modal <span style="color:var(--text-3)">vs</span> Popup</span>
+    </div>
+  </footer>
+
+  <!-- ── MODAL EN VIVO ── -->
+  <div class="modal-overlay" id="liveModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="liveModalTitle">
+      <div class="modal-tag">modal · componente</div>
+      <h3 id="liveModalTitle">⬜ ¡Esto es un Modal!</h3>
+      <p>Nota cómo el fondo está completamente oscurecido. No puedes hacer clic en ningún otro elemento de la página.</p>
+      <div class="modal-highlight">
+        <strong>Foco atrapado:</strong> Si presionas Tab, el cursor no saldrá de esta ventana. Eso es accesibilidad correcta para modales. Prueba con la tecla <code style="font-family:'Space Mono',monospace;font-size:11px;background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;">Esc</code> para cerrar.
+      </div>
+      <div class="modal-actions">
+        <button class="modal-cancel" onclick="document.getElementById('liveModal').classList.remove('open')">Cancelar</button>
+        <button class="btn btn-primary" onclick="document.getElementById('liveModal').classList.remove('open')">Entendido ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
