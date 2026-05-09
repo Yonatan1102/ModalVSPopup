@@ -28,8 +28,6 @@
   <section class="hero">
     <div class="container">
       <div class="hero-eyebrow">
-        <span class="dot-live"></span>
-        Exposición · Componentes de Interfaz Web
       </div>
       <h1>
         <span class="word-modal">Modal</span>
@@ -50,7 +48,6 @@
   <!-- DEFINICIONES -->
   <section class="section reveal" id="definicion">
     <div class="container">
-      <div class="section-label">01 · Definición</div>
       <div class="section-title">¿Qué es cada uno?</div>
 
       <div class="def-grid">
@@ -96,7 +93,6 @@
   <!-- TABLA COMPARATIVA -->
   <section class="section reveal" id="diferencias">
     <div class="container">
-      <div class="section-label">02 · Comparativa</div>
       <div class="section-title">Diferencias técnicas</div>
 
       <div class="table-wrap">
@@ -145,11 +141,6 @@
               <td class="popup-val">Pequeño a mediano (150–300px)</td>
             </tr>
             <tr>
-              <td>Rol ARIA</td>
-              <td class="modal-val">role="dialog" aria-modal="true"</td>
-              <td class="popup-val">role="tooltip" o popover API</td>
-            </tr>
-            <tr>
               <td>Nivel de urgencia</td>
               <td class="modal-val">Decisiones críticas</td>
               <td class="popup-val">Información contextual</td>
@@ -163,7 +154,6 @@
   <!-- DEMO EN VIVO -->
   <section class="section reveal" id="demo">
     <div class="container">
-      <div class="section-label">03 · Demo interactivo</div>
       <div class="section-title">Pruébalo tú mismo</div>
 
       <div class="demo-grid">
@@ -184,14 +174,14 @@
                 <div class="sim-line"></div>
               </div>
               <div style="position:relative;z-index:2;background:rgba(0,0,0,0.5);border-radius:8px;padding:10px 14px;font-size:11px;color:rgba(255,255,255,0.5);font-family:'Space Mono',monospace;">
-                ████ overlay bloquea el fondo ████
+               overlay bloquea el fondo
               </div>
             </div>
           </div>
           <h4 style="color: var(--purple-400);">Modal</h4>
           <p>Al abrir el modal, el fondo se oscurece completamente y <strong style="color:var(--text)">no puedes interactuar con nada</strong> hasta cerrarlo. Es intencional.</p>
           <button class="btn btn-primary" onclick="document.getElementById('liveModal').classList.add('open')">
-            ⬜ Abrir Modal
+             Abrir Modal
           </button>
         </div>
 
@@ -214,11 +204,11 @@
           <div class="popup-anchor" id="popupAnchor">
             <div class="popup-box" id="livePopup" role="tooltip">
               <div class="popup-tag">popup</div>
-              <h4>💬 Información adicional</h4>
+              <h4> Información adicional</h4>
               <p>Este popup no bloquea nada. La página sigue activa por completo detrás de mí. ¡Eso me diferencia del modal!</p>
             </div>
             <button class="btn btn-secondary" onclick="togglePopup(event)">
-              💬 Abrir Popup
+               Abrir Popup
             </button>
           </div>
         </div>
@@ -230,7 +220,6 @@
   <!-- CASOS DE USO -->
   <section class="section reveal" id="uso">
     <div class="container">
-      <div class="section-label">04 · Aplicación práctica</div>
       <div class="section-title">¿Cuándo usar cada uno?</div>
 
       <div class="use-grid">
@@ -316,7 +305,6 @@
   <!-- CÓDIGO -->
   <section class="section reveal" id="codigo">
     <div class="container">
-      <div class="section-label">05 · Implementación</div>
       <div class="section-title">Código básico</div>
 
       <div class="code-tabs">
@@ -466,7 +454,7 @@ document.<span class="fn">addEventListener</span>(<span class="st">'click'</span
         <h3>
           Si el usuario <span class="hi-m">DEBE actuar</span> antes de continuar → usa un
           <span class="hi-m">Modal</span>.
-          Si solo quieres <span class="hi-p">mostrar info extra</span> sin interrumpir → usa un
+           <br/> Si solo quieres <span class="hi-p">mostrar info extra</span> sin interrumpir → usa un
           <span class="hi-p">Popup</span>.
         </h3>
       </div>
@@ -484,8 +472,7 @@ document.<span class="fn">addEventListener</span>(<span class="st">'click'</span
   <!-- ── MODAL EN VIVO ── -->
   <div class="modal-overlay" id="liveModal" onclick="closeModalOnOverlay(event)">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="liveModalTitle">
-      <div class="modal-tag">modal · componente</div>
-      <h3 id="liveModalTitle">⬜ ¡Esto es un Modal!</h3>
+      <h3 id="liveModalTitle">¡Esto es un Modal!</h3>
       <p>Nota cómo el fondo está completamente oscurecido. No puedes hacer clic en ningún otro elemento de la página.</p>
       <div class="modal-highlight">
         <strong>Foco atrapado:</strong> Si presionas Tab, el cursor no saldrá de esta ventana. Eso es accesibilidad correcta para modales. Prueba con la tecla <code style="font-family:'Space Mono',monospace;font-size:11px;background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;">Esc</code> para cerrar.
